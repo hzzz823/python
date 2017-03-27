@@ -47,16 +47,18 @@ def webweixin_it(ticket):
     ticket_url = ticket.replace('%2', '%252')
     payload = {'r': '-272121405', 'lang': 'zh_CN', 'pass_ticket': ticket}
     headers = {'Accept': 'application/json, text/plain, */*',
-               'Host': 'wx.qq.com',
-               'Referer': 'https://wx.qq.com/?&lang=zh_CN',
-               'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36',
-               'Accept-Encoding': 'gzip, deflate, sdch, br',
+               'Accept-Encoding': 'gzip, deflate, br',
                'Accept-Language': 'zh-CN,zh;q=0.8,en;q=0.6',
                'Cache-Control': 'no-cache',
                'Connection': 'keep-alive',
+               'Content-Length': '148',
+               'Content-Type': 'application/json;charset=UTF-8',
                'DNT': '1',
                'Host': 'wx.qq.com',
-               'Pragma': 'no-cache'}
+               'Origin': 'https://wx.qq.com',
+               'Pragma': 'no-cache',
+               'Referer': 'https://wx.qq.com/?&lang=zh_CN',
+               'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36'}
     url = f'https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxinit?r=-272121405&lang=zh_CN&pass_ticket={ticket_url}'
     r = session.post(url, data=payload, headers=headers)
     print(r.text)
